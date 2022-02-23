@@ -31,7 +31,7 @@
     "php": ">=7.3",
     "google/cloud-bigquery": "*",
     "knight/armor": ">=2.0.1",
-    "knight/artifact-entity-adapter-ksql-dialect-bq": ">=2.0.1"
+    "knight/artifact-entity-adapter-ksql": ">=1.0.4"
   },
   "repositories": [
     {
