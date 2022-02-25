@@ -184,7 +184,7 @@ This function is used to create a natural join
      <p>
  * **Returns:** `h` — string 'unknown'
 
-> ## ***KSQL\dialects\bq\database\BigQuery usable methods***
+> ## ***Class KSQL\dialects\bq\database\BigQuery usable methods***
 
 #### Documentation
 
