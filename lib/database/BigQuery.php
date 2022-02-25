@@ -10,10 +10,18 @@ use KSQL\connection\Common as Connection;
 use Google\Cloud\BigQuery\BigQueryClient;
 use Google\Cloud\Core\Exception\BadRequestException;
 
+/* This class is used to create a new instance of the BigQueryClient class */
+
 final class BigQuery extends Connection
 {
     const LOCATION = 'location';
     const SERVICE_ACCOUNT = 'keyFile';
+
+    /**
+     * This function is used to create a new instance of the BigQueryClient class
+     * 
+     * @param Dialect dialect The name of the dialect.
+     */
 
     public function __construct(Dialect $dialect, string ...$array)
     {
@@ -40,6 +48,14 @@ final class BigQuery extends Connection
 
         $this->setInstance($bq);
     }
+
+    /**
+     * This function executes a prepared statement
+     * 
+     * @param Statement statement The statement to execute.
+     * 
+     * @return The result of the query.
+     */
 
     public function execute(Statement $statement)
     {

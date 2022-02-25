@@ -12,6 +12,8 @@ use KSQL\operations\select\Limit;
 
 use KSQL\dialects\bq\database\BigQuery as Connection;
 
+/* This class is used to create a connection to a BigQuery database */
+
 final class BigQuery extends Dialect
 {
     use Configuration;
@@ -27,6 +29,14 @@ final class BigQuery extends Dialect
     const CONFIGURATION_TOKEN_URI = 0x44A5E;
     const CONFIGURATION_AUTH_PROVIDER_X509_CERT_URL = 0x446D8;
     const CONFIGURATION_CLIENT_X509_CERT_URL = 0x44EAA;
+
+    /**
+     * This function creates a new instance of the Connection class
+     * 
+     * @param string constant The name of the constant to use.
+     * 
+     * @return A connection object.
+     */
 
     public static function Connection(string $constant = 'DEFAULT') : Connection
     {
@@ -62,10 +72,25 @@ final class BigQuery extends Dialect
         return $connection;
     }
 
+   /**
+    * Returns the character with ASCII value 64
+    * 
+    * @return The character with the ASCII value of 64, which is the character '@'.
+    */
+
     public static function BindCharacter() : string
     {
         return chr(64);
     }
+
+    /**
+     * This function returns the column names of the select statement in a format that can be used by
+     * the JSON_QUERY function
+     * 
+     * @param Select select The Select object that we're converting to JSON.
+     * 
+     * @return The column name.
+     */
 
     public static function ToJSON(Select $select) : string
     {
@@ -87,11 +112,27 @@ final class BigQuery extends Dialect
         return $column;
     }
 
+    /**
+     * This function returns the last inserted ID
+     * 
+     * @param Table table The table to insert into.
+     * 
+     * @return The last inserted ID.
+     */
+
     public static function LastInsertID(Table $table) : string
     {
         throw new CustomException('developer/database/dialects/insert/last/id/unknown');
         return static::UNKNOWN;
     }
+
+    /**
+     * Returns the value of the specified element
+     * 
+     * @param string elaborate the name of the field to be used in the query.
+     * 
+     * @return The string 'ANY_VALUE(elaborate)'
+     */
 
     public static function AnyValue(string $elaborate) : string
     {
@@ -99,10 +140,29 @@ final class BigQuery extends Dialect
         return $any;
     }
 
+    /**
+     * This function takes a string as an argument and returns a string
+     * 
+     * @param string filtered The string that is being filtered.
+     * 
+     * @return Nothing
+     */
+
     public static function FileReplacer(string $filtered) :? string
     {
         return null;
     }
+
+    /**
+     * This function takes a Statement and a Limit object as parameters. 
+     * It then checks to see if the Limit object has a value. If it does, 
+     * it appends the value to the Statement. If it doesn't, it does nothing
+     * 
+     * @param Statement statement The statement object to append the limit to.
+     * @param Limit limit The number of rows to return.
+     * 
+     * @return Nothing.
+     */
 
     public static function Limit(Statement $statement, Limit $limit) : void
     {
@@ -118,6 +178,14 @@ final class BigQuery extends Dialect
             $statement->append($offest);
         }
     }
+
+    /**
+     * This function is used to create a natural join
+     * 
+     * @param string table The table to join with.
+     * 
+     * @return The string 'unknown'
+     */
 
     public static function NaturalJoin(string $table) : string
     {
