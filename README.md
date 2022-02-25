@@ -21,7 +21,7 @@ $ composer require knight/artifact-entity-adapter-ksql-dialect-bq
 ### Concepts
 
 Configuration is grouped into configuration namespace by the framework [Knight](https://github.com/energia-source/knight).
-The configuration files are stored in the configurations folder and file named Higeco.php.
+The configuration files are stored in the configurations folder and file named BigQuery.php.
 
 ### Example
 
