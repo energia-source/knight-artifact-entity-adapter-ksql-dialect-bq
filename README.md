@@ -93,7 +93,7 @@ $table_query = KSQL::start($table_query_connection, $table);
 $table_query_connection_dialect = $table_query_connection->getDialect();
 $table->getInjection()->addColumn($table_query_connection_dialect,
     $table_timestamp_name, '#name# > $0',
-    $period->getField('time')->getValue());
+    500);
 
 $table_query_select = $table_query->delete();
 $table_query_select_response = $table_query_select->run();
