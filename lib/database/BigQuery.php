@@ -1,6 +1,6 @@
 <?PHP
 
-namespace extensions\database;
+namespace KSQL\dialects\bq\database;
 
 use KSQL\Factory;
 use KSQL\Statement;

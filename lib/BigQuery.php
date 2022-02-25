@@ -1,6 +1,6 @@
 <?PHP
 
-namespace extensions;
+namespace KSQL\dialects\bq;
 
 use Knight\Configuration;
 
