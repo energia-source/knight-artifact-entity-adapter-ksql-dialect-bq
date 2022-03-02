@@ -1,4 +1,4 @@
-# Documentation knight-artifact-entity-adapter-ksql-dialect-bq
+#### Documentation knight-artifact-entity-adapter-ksql-dialect-bq
 
 > Knight PHP library to use [BigQuery](https://cloud.google.com/bigquery/) dialect into [KSQL](https://github.com/energia-source/knight-artifact-entity-adapter-ksql/) Library.
 
@@ -23,11 +23,12 @@ $ composer require knight/artifact-entity-adapter-ksql-dialect-bq
 Configuration is grouped into configuration namespace by the framework [Knight](https://github.com/energia-source/knight).
 The configuration files are stored in the configurations folder and file named BigQuery.php.
 
-### Example
+### Setup
 
 So the basic setup looks something like this:
 
 ```
+
 <?PHP
 
 namespace configurations;
@@ -65,143 +66,38 @@ final class BigQuery
 		Define::CONFIGURATION_CLIENT_X509_CERT_URL => 'https://www.googleapis.com/robot/v1/metadata/x509/account%40energia-cloud-project.iam.gserviceaccount.com'
 	];
 }
-```
-
-## Usage
-
-So the basic usage looks something like this:
-
-```
-<?PHP
-
-namespace what\you\want;
-
-use Knight\armor\Output;
-
-use KSQL\Initiator as KSQL;
-use KSQL\Factory;
-use KSQL\dialects\bq\BigQuery;
-
-use applications\module\my\database\Table;
-
-$table = new Table();
-$table->setCollectionName('Dataset.table');
-$table_timestamp = $table->getField('timestamp');
-$table_timestamp_name = $table_timestamp->getName();
-$table_query_connection = Factory::connect(BigQuery::class, 'CHARON');
-$table_query = KSQL::start($table_query_connection, $table);
-$table_query_connection_dialect = $table_query_connection->getDialect();
-$table->getInjection()->addColumn($table_query_connection_dialect,
-    $table_timestamp_name, '#name# > $0',
-    500);
-
-$table_query_select = $table_query->delete();
-$table_query_select_response = $table_query_select->run();
-if (null === $table_query_select_response) Output::print(false);
-
-Output::print(true);
 
 ```
 
 ## Structure
 
 - library:
-    - [KSQL\dialects\bq\BigQuery](https://github.com/energia-source/knight-artifact-entity-adapter-ksql-dialect-bq/blob/main/lib/BigQuery.php)
-    - [KSQL\dialects\bq\database\BigQuery](https://github.com/energia-source/knight-artifact-entity-adapter-ksql-dialect-bq/blob/main/lib/database/BigQuery.php)
+    - [KSQL\dialects\bq](https://github.com/energia-source/knight-artifact-entity-adapter-ksql-dialect-bq/tree/main/lib)
+    - [KSQL\dialects\bq\database](https://github.com/energia-source/knight-artifact-entity-adapter-ksql-dialect-bq/tree/main/lib/database)
 
-> ## ***Class KSQL\dialects\bq\BigQuery usable methods***
+## Usage
 
-#### Documentation
+```
 
-##### `public static function Connection(string $constant = 'DEFAULT') : Connection`
+...
 
-This function creates a new instance of the Connection class
+$timed = time() - 86400;
 
- * **Parameters:** `string` — The name of the constant to use.
+$table = new Table();
+$table_collection = sprintf(Table::NAME, $query_serial, $query_device);
+$table->setCollectionName($table_collection);
+$table_timestamp = $table->getField('timestamp');
+$table_timestamp_name = $table_timestamp->getName();
+$table_query_connection = Factory::connect(BigQuery::class, 'CHARON');
+$table_query = KSQL::start($table_query_connection, $table);
+$table_query_connection_dialect = $table_query_connection->getDialect();
+$table->getInjection()->addColumn($table_query_connection_dialect,
+	$table_timestamp_name, '#name# > $0',
+	$timed);
 
-     <p>
- * **Returns:** `` — connection object.
+...
 
-##### `public static function BindCharacter() : string`
-
-Returns the character with ASCII value 64
-
- * **Returns:** `h` — character with the ASCII value of 64, which is the character '@'.
-
-##### `public static function ToJSON(Select $select) : string`
-
-This function returns the column names of the select statement in a format that can be used by the JSON_QUERY function
-
- * **Parameters:** `Select` — The Select object that we're converting to JSON.
-
-     <p>
- * **Returns:** `h` — column name.
-
-##### `public static function LastInsertID(Table $table) : string`
-
-This function returns the last inserted ID
-
- * **Parameters:** `Table` — The table to insert into.
-
-     <p>
- * **Returns:** `h` — last inserted ID.
-
-##### `public static function AnyValue(string $elaborate) : string`
-
-Returns the value of the specified element
-
- * **Parameters:** `string` — the name of the field to be used in the query.
-
-     <p>
- * **Returns:** `h` — string 'ANY_VALUE(elaborate)'
-
-##### `public static function FileReplacer(string $filtered) :? string`
-
-This function takes a string as an argument and returns a string
-
- * **Parameters:** `string` — The string that is being filtered.
-
-     <p>
- * **Returns:** `othin` — 
-
-##### `public static function Limit(Statement $statement, Limit $limit) : void`
-
-This function takes a Statement and a Limit object as parameters. It then checks to see if the Limit object has a value. If it does, it appends the value to the Statement. If it doesn't, it does nothing
-
- * **Parameters:**
-   * `Statement` — The statement object to append the limit to.
-   * `Limit` — The number of rows to return.
-
-     <p>
- * **Returns:** `othing` — 
-
-##### `public static function NaturalJoin(string $table) : string`
-
-This function is used to create a natural join
-
- * **Parameters:** `string` — The table to join with.
-
-     <p>
- * **Returns:** `h` — string 'unknown'
-
-> ## ***Class KSQL\dialects\bq\database\BigQuery usable methods***
-
-#### Documentation
-
-##### `public function __construct(Dialect $dialect, string ...$array)`
-
-This function is used to create a new instance of the BigQueryClient class
-
- * **Parameters:** `Dialect` — The name of the dialect.
-
-##### `public function execute(Statement $statement)`
-
-This function executes a prepared statement
-
- * **Parameters:** `Statement` — The statement to execute.
-
-     <p>
- * **Returns:** `h` — result of the query.
+```
 
 ## Built With
 
