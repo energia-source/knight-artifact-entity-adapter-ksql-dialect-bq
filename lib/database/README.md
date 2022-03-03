@@ -1,6 +1,6 @@
-#### Documentation knight-artifact-entity-adapter-ksql-dialect-bq
+# Documentation knight-artifact-entity-adapter-ksql-dialect-bq
 
-> Knight PHP library to use [BigQuery](https://cloud.google.com/bigquery/) dialect into [KSQL](https://github.com/energia-source/knight-artifact-entity-adapter-ksql/) Library.
+Knight PHP library to use [BigQuery](https://cloud.google.com/bigquery/) dialect into [KSQL](https://github.com/energia-source/knight-artifact-entity-adapter-ksql/) Library.
 
 **NOTE:** This repository is part of [Knight](https://github.com/energia-source/knight). Any
 support requests, bug reports, or development contributions should be directed to
@@ -8,13 +8,13 @@ that project.
 
 ## Structure
 
-- library:
-    - [KSQL\dialects\bq](https://github.com/energia-source/knight-artifact-entity-adapter-ksql-dialect-bq/tree/main/lib)
+library:
     - [KSQL\dialects\bq\database](https://github.com/energia-source/knight-artifact-entity-adapter-ksql-dialect-bq/tree/main/lib/database)
+    - [KSQL\dialects\bq](https://github.com/energia-source/knight-artifact-entity-adapter-ksql-dialect-bq/tree/main/lib)
 
-## ***Class KSQL\dialects\bq\database\BigQuery usable methods***
+<br>
 
-###### Documentation
+#### ***Class KSQL\dialects\bq\database\BigQuery usable methods***
 
 ##### `public function __construct(Dialect $dialect, string ...$array)`
 
@@ -29,7 +29,7 @@ This function executes a prepared statement
  * **Parameters:** `Statement` — The statement to execute.
 
      <p>
- * **Returns:** `h` — result of the query.
+ * **Returns:** The result of the query.
 
 ## Built With
 

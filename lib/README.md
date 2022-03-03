@@ -1,6 +1,6 @@
-#### Documentation knight-artifact-entity-adapter-ksql-dialect-bq
+# Documentation knight-artifact-entity-adapter-ksql-dialect-bq
 
-> Knight PHP library to use [BigQuery](https://cloud.google.com/bigquery/) dialect into [KSQL](https://github.com/energia-source/knight-artifact-entity-adapter-ksql/) Library.
+Knight PHP library to use [BigQuery](https://cloud.google.com/bigquery/) dialect into [KSQL](https://github.com/energia-source/knight-artifact-entity-adapter-ksql/) Library.
 
 **NOTE:** This repository is part of [Knight](https://github.com/energia-source/knight). Any
 support requests, bug reports, or development contributions should be directed to
@@ -8,13 +8,13 @@ that project.
 
 ## Structure
 
-- library:
-    - [KSQL\dialects\bq](https://github.com/energia-source/knight-artifact-entity-adapter-ksql-dialect-bq/tree/main/lib)
+library:
     - [KSQL\dialects\bq\database](https://github.com/energia-source/knight-artifact-entity-adapter-ksql-dialect-bq/tree/main/lib/database)
+    - [KSQL\dialects\bq](https://github.com/energia-source/knight-artifact-entity-adapter-ksql-dialect-bq/tree/main/lib)
 
-## ***Class KSQL\dialects\bq\BigQuery usable methods***
+<br>
 
-###### Documentation
+#### ***Class KSQL\dialects\bq\BigQuery usable methods***
 
 ##### `public static function Connection(string $constant = 'DEFAULT') : Connection`
 
@@ -29,7 +29,7 @@ This function creates a new instance of the Connection class
 
 Returns the character with ASCII value 64
 
- * **Returns:** `h` — character with the ASCII value of 64, which is the character '@'.
+ * **Returns:** The character with the ASCII value of 64, which is the character '@'.
 
 ##### `public static function ToJSON(Select $select) : string`
 
@@ -38,7 +38,7 @@ This function returns the column names of the select statement in a format that 
  * **Parameters:** `Select` — The Select object that we're converting to JSON.
 
      <p>
- * **Returns:** `h` — column name.
+ * **Returns:** The column name.
 
 ##### `public static function LastInsertID(Table $table) : string`
 
@@ -47,7 +47,7 @@ This function returns the last inserted ID
  * **Parameters:** `Table` — The table to insert into.
 
      <p>
- * **Returns:** `h` — last inserted ID.
+ * **Returns:** The last inserted ID.
 
 ##### `public static function AnyValue(string $elaborate) : string`
 
@@ -56,7 +56,7 @@ Returns the value of the specified element
  * **Parameters:** `string` — the name of the field to be used in the query.
 
      <p>
- * **Returns:** `h` — string 'ANY_VALUE(elaborate)'
+ * **Returns:** The string 'ANY_VALUE(elaborate)'
 
 ##### `public static function FileReplacer(string $filtered) :? string`
 
@@ -85,7 +85,7 @@ This function is used to create a natural join
  * **Parameters:** `string` — The table to join with.
 
      <p>
- * **Returns:** `h` — string 'unknown'
+ * **Returns:** The string 'unknown'
 
 ## Built With
 
